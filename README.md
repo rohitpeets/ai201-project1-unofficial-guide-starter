@@ -16,8 +16,7 @@
      Domain : Mcneese State University Professor Reviews
 
 Each student has a different method of learning that works for them.  while going through college every student is faced with a situation where they end up taking a class under a professor whose method of teaching is different from what works for that specific student. There is a need for students to have access to information about the way every professor teaches, their grading style, their exam patterns and other useful info. 
-This system allows students to make queries in their natural language.
-
+This system allows students to make queries in their natural language. Official course listings and syllabi don't reflect how a professor actually teaches, their grading patterns, or exam difficulty — that information only exists in student reviews.
 ---
 
 ## Document Sources
@@ -185,7 +184,7 @@ Add a professor-to-course mapping at ingestion time so that comparative queries 
      Answer both questions with at least 2–3 sentences each. -->
 
 **One way the spec helped you during implementation:**
-TWriting down the professor name handling decision before coding saved me from a bug I wouldn't have noticed until retrieval. If the name was injected into chunk text, embeddings would pull toward the name string instead of the review content. Having it in planning.md meant it was applied consistently in ingest_and_chunk.py from the start rather than fixed later.
+Writing down the professor name handling decision before coding saved me from a bug I wouldn't have noticed until retrieval. If the name was injected into chunk text, embeddings would pull toward the name string instead of the review content. Having it in planning.md meant it was applied consistently in ingest_and_chunk.py from the start rather than fixed later.
 **One way your implementation diverged from the spec, and why:**
 The spec described a keyword-based noise filter that kept chunks only if they contained a numeric rating, a course code, or a domain/sentiment keyword. During Milestone 3 implementation this was abandoned after it silently dropped a substantive Lavergne review that contained no trigger keywords. The filter was replaced with a simple 15-word minimum count, which preserved all meaningful reviews without risk of false negatives. The planning.md was updated to document this change.
 ---
